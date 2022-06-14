@@ -1,0 +1,45 @@
+# Routes
+# This file defines all application routes (Higher priority routes first)
+# ~~~~
+
+# FIXME Doesn't work
+->      /v2                         v2.Routes
+
+# An example controller showing a sample home page
+GET     /                           controllers.HomeController.index
+
+# Assets
+GET     /assets/*file               controllers.Assets.versioned(path="/public", file: Asset)
+
+# Info
+GET     /port                       controllers.HomeController.getPort
+
+# Params
+GET     /params/:id                 controllers.HomeController.optionalParam(idd: Integer ?= null, id: Integer)
+GET     /params/:id/fixed           controllers.HomeController.fixedParam(a = "1",id, b="2", c="3")
+
+# Redirect
+GET     /redirect                   controllers.HomeController.redirect
+
+# Session
+GET     /cookies/session-scope      controllers.HomeController.sessionScopeCookies(request: Request)
+GET     /cookies/flash-scope        controllers.HomeController.flashScopeCookies(request: Request)
+
+# Akka scheduling
+GET     /akka/schedule              controllers.HomeController.akkaSchedule
+
+# Web services
+GET     /web-services/echo          controllers.WebServiceController.echo
+
+# Large response
+GET     /large-response/count       controllers.LargeResponseController.processLargeResponse
+
+# Body parsers
+POST     /body-parser/explicit      controllers.JsonRequestBodyController.explicitJsonRequestBody(request: Request)
+POST     /body-parser/implicit      controllers.JsonRequestBodyController.implicitJsonRequestBody(request: Request)
+
+
+
+
+
+
