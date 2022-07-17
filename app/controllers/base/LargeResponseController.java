@@ -1,4 +1,4 @@
-package controllers;
+package controllers.base;
 
 import akka.stream.Materializer;
 import akka.stream.javadsl.Sink;

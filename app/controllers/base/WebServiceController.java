@@ -1,4 +1,4 @@
-package controllers;
+package controllers.base;
 
 import play.libs.ws.WSClient;
 import play.mvc.Controller;

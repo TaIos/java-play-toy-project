@@ -1,4 +1,4 @@
-package controllers;
+package controllers.base;
 
 import com.typesafe.config.Config;
 import play.mvc.Controller;
