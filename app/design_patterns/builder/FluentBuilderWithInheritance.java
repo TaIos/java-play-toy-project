@@ -1,4 +1,4 @@
-package design_patterns;
+package design_patterns.builder;
 
 public class FluentBuilderWithInheritance {
 
