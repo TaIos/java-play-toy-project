@@ -2,53 +2,44 @@ package design_patterns;
 
 public class FluentBuilderWithInheritance {
 
-    public static class Person {
+  public static class Person {
 
-        private String name;
-        private String position;
+    private String name;
+    private String position;
+  }
+
+  public static class PersonBuilder<SELF extends PersonBuilder<SELF>> {
+
+    protected Person person = new Person();
+
+    public SELF withName(String name) {
+      person.name = name;
+      return self();
     }
 
-
-    public static class PersonBuilder<SELF extends PersonBuilder<SELF>> {
-
-        protected Person person = new Person();
-
-
-        public SELF withName(String name) {
-            person.name = name;
-            return self();
-        }
-
-
-        public Person build() {
-            return person;
-        }
-
-
-        protected SELF self() {
-            return (SELF) this;
-        }
+    public Person build() {
+      return person;
     }
 
-    public static class EmployeeBuilder extends PersonBuilder<EmployeeBuilder> {
+    protected SELF self() {
+      return (SELF) this;
+    }
+  }
 
-        public EmployeeBuilder worksAt(String position) {
-            person.position = position;
-            return self();
-        }
+  public static class EmployeeBuilder extends PersonBuilder<EmployeeBuilder> {
 
-
-        @Override
-        protected EmployeeBuilder self() {
-            return this;
-        }
+    public EmployeeBuilder worksAt(String position) {
+      person.position = position;
+      return self();
     }
 
-
-    public static void main(String[] args) {
-        Person person = new EmployeeBuilder()
-                .withName("Mike")
-                .worksAt("Google")
-                .build();
+    @Override
+    protected EmployeeBuilder self() {
+      return this;
     }
+  }
+
+  public static void main(String[] args) {
+    Person person = new EmployeeBuilder().withName("Mike").worksAt("Google").build();
+  }
 }

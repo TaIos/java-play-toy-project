@@ -31,3 +31,10 @@ Compile / unmanagedResourceDirectories := {
   System.out.print("Compile / unmanagedResourceDirectories: " + value)
   value
 }
+
+addCommandAlias(
+  "validateCode",
+  List(
+    "javafmtCheckAll",
+  ).mkString(";")
+)
