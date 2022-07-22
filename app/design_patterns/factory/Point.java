@@ -8,13 +8,19 @@ public class Point {
     this.y = y;
   }
 
-  // factory method
-  public static Point newCartesianPoint(double x, double y) {
-    return new Point(x, y);
+  // factory class
+  public static class Factory {
+
+    public static Point newCartesianPoint(double x, double y) {
+      return new Point(x, y);
+    }
+
+    public static Point newPolarPoint(double rho, double theta) {
+      return new Point(rho * Math.cos(theta), rho * Math.sin(theta));
+    }
   }
 
-  // factory method
-  public static Point newPolarPoint(double rho, double theta) {
-    return new Point(rho * Math.cos(theta), rho * Math.sin(theta));
+  interface TestingInterface {
+    static void printSomething() {}
   }
 }
